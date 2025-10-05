@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar sesión con Google</title>
+  <style>
+    body {
+      font-family: Inter, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f8f9fa;
+    }
+    .login-box {
+      background: white;
+      padding: 2rem 3rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button img {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Iniciar sesión</h2>
+    <p>Conecta tu cuenta de Google para autorizar el acceso a tus hojas de cálculo.</p>
+    <button id="googleLogin">
+      <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" />
+      Continuar con Google
+    </button>
+  </div>
+
+  <script>
+    const GOOGLE_CLIENT_ID = "TU_CLIENT_ID_AQUI";
+    const REDIRECT_URI = "https://tudominio.com/oauth/google/callback"; // backend
+    const SCOPES = [
+      "openid",
+      "email",
+      "profile",
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/drive.file"
+    ];
+
+    document.getElementById("googleLogin").addEventListener("click", () => {
+      const params = new URLSearchParams({
+        client_id: GOOGLE_CLIENT_ID,
+        redirect_uri: REDIRECT_URI,
+        response_type: "code",
+        scope: SCOPES.join(" "),
+        access_type: "offline",
+        prompt: "consent"
+      });
+
+      const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
+      window.location.href = authUrl;
+    });
+  </script>
+</body>
+</html>
