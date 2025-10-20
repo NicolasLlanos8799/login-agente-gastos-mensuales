@@ -1,0 +1,200 @@
+/* ===== Branding iA.Agency + mobile-first + dark mode ===== */
+:root{
+  /* Light */
+  --bg:#f6f8ff; --ink:#0d1222; --muted:#5b6aa8;
+  --panel:#ffffff; --panel-2:#f1f4ff; --border:#d9e1ff;
+  --primary:#2152ff; --primary-2:#6ea8fe; --secondary:#0f1730;
+  --ok:#19c37d; --warn:#f2b705; --mono-bg:#eef2ff;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+
+  --space: clamp(14px, 3.5vw, 24px);
+  --radius: 14px;
+  --touch: 48px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0b1020; --ink:#e8ecff; --muted:#a6b0d9;
+    --panel:#121a33; --panel-2:#0f1730; --border:#22305f;
+    --primary:#6ea8fe; --primary-2:#8db7ff; --secondary:#0d1530;
+    --mono-bg:#10193a; --shadow:0 10px 35px rgba(0,0,0,.35);
+  }
+}
+html[data-theme="dark"]{
+  --bg:#0b1020; --ink:#e8ecff; --muted:#a6b0d9;
+  --panel:#121a33; --panel-2:#0f1730; --border:#22305f;
+  --primary:#6ea8fe; --primary-2:#8db7ff; --secondary:#0d1530;
+  --mono-bg:#10193a; --shadow:0 10px 35px rgba(0,0,0,.35);
+}
+
+/* ===== Base ===== */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, "Helvetica Neue", Arial;
+  color:var(--ink); background:
+    radial-gradient(900px 420px at 10% -10%, #1b2a6d22, transparent 60%),
+    radial-gradient(900px 420px at 110% 0%, #16a08518, transparent 60%),
+    var(--bg);
+  padding: calc(var(--space) + env(safe-area-inset-top)) var(--space) calc(96px + env(safe-area-inset-bottom));
+  display:flex; align-items:flex-start; justify-content:center;
+}
+.wrap{ width:100%; max-width:960px }
+
+/* Topbar */
+.topbar{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px }
+.brand{ display:flex; gap:10px; align-items:center }
+.logo{
+  width:40px; height:40px; border-radius:12px; display:grid; place-items:center; font-weight:800; color:#fff;
+  background: radial-gradient(circle at 30% 30%, #9ad0ff, #5a86ff 60%, #2e54ff);
+  box-shadow: inset 0 0 22px #ffffff33;
+}
+.brand-text{ display:flex; flex-direction:column; line-height:1.1 }
+.brand-text .sub{ color:var(--muted); font-size:12px }
+.ghost{
+  min-height:var(--touch);
+  background:transparent; border:1px solid var(--border); color:var(--ink);
+  padding:0 14px; border-radius:10px; cursor:pointer;
+}
+
+/* Card */
+.card{
+  background:linear-gradient(180deg,var(--panel),var(--panel-2));
+  border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.head{
+  padding:16px var(--space) 8px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+}
+.app-icon{
+  width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#91ffe8,#2152ff 70%);
+  color:#0b1020; font-weight:900; display:grid;place-items:center;
+}
+h1{ font-size:clamp(20px, 5.5vw, 26px); margin:0 0 4px }
+.sub{ color:var(--muted); font-size:clamp(13px, 3.5vw, 14px) }
+
+.body{ padding:12px var(--space) 16px; display:grid; gap:14px }
+.grid{ display:grid; gap:14px; grid-template-columns:1fr }
+@media (min-width:860px){ .grid{ grid-template-columns: 1.2fr .8fr } }
+
+.box{
+  border:1px solid var(--border); border-radius:12px; padding:14px; background: color-mix(in srgb, var(--panel) 92%, transparent);
+}
+.box h3{ margin:0 0 8px; font-size:16px }
+.steps{ display:grid; gap:10px; margin:6px 0 }
+.step{ display:flex; gap:12px; align-items:flex-start }
+.step .n{
+  width:26px;height:26px;border-radius:50%;
+  background:color-mix(in srgb, var(--primary) 24%, var(--panel-2));
+  color:#fff; font-size:13px; display:grid; place-items:center; flex:0 0 26px; margin-top:2px;
+}
+.mono{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background:var(--mono-bg); padding:4px 8px; border-radius:8px; border:1px solid var(--border);
+}
+
+.row{ display:flex; gap:10px; align-items:center; flex-wrap:wrap }
+.tap{ min-height:var(--touch) }
+.copy{
+  border:1px solid var(--border); background:var(--panel-2); color:var(--ink); padding:10px 12px; border-radius:10px;
+  display:flex; align-items:center; gap:8px; cursor:pointer; flex:1 1 160px;
+}
+.actions-group .btn{ margin-top:10px }
+
+.btn{
+  border:0; padding:14px 18px; border-radius:12px; cursor:pointer; width:100%;
+  display:flex; align-items:center; gap:10px; justify-content:center; font-weight:800; letter-spacing:.2px;
+}
+.primary{ background: linear-gradient(90deg, var(--primary), var(--primary-2)); color:#fff }
+.secondary{ background: var(--secondary); color:#e8ecff; border:1px solid var(--border) }
+.btn:active{ transform: translateY(1px) }
+
+.muted{ color:var(--muted) }
+.small{ font-size:12.5px }
+.mt-6{ margin-top:6px } .mt-12{ margin-top:12px } .mt-14{ margin-top:14px }
+.lh{ line-height:1.55 }
+
+.qr{
+  display:grid; place-items:center; padding:16px; border:1px dashed var(--border); border-radius:12px; min-height:220px; text-align:center;
+}
+.hidden{ display:none !important }
+
+.foot{
+  padding:12px var(--space) 16px; border-top:1px solid var(--border); background:var(--panel-2);
+  display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+}
+.tag{ color: color-mix(in srgb, var(--primary) 55%, var(--muted)); font-size:12.5px }
+.ok{ color:var(--ok) } .warn{ color:var(--warn) }
+
+/* Sticky CTA para el paso 2 en móviles */
+.sticky-cta{
+  position:fixed; left:0; right:0;
+  bottom: max(10px, env(safe-area-inset-bottom));
+  padding: 0 var(--space);
+  display:block;
+}
+.sticky-cta .btn{
+  border-radius:14px; box-shadow: var(--shadow);
+}
+@media (min-width:860px){
+  .sticky-cta{ display:none }
+}
+
+/* Motion reduce */
+@media (prefers-reduced-motion: reduce){
+  .btn:active{ transform:none }
+}
+/* --- Chips y tipografía mono mejorada --- */
+.inline-step{
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.6;
+}
+
+/* base chip */
+.chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  font-weight: 600;
+  letter-spacing: .2px;
+  white-space: nowrap;          /* evita saltos feos en medio del código/teléfono */
+}
+
+/* contenido monoespaciado y tamaño cómodo en móvil */
+.chip-code,
+.chip-phone{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.95rem;
+}
+
+/* diferenciar visualmente el "join" */
+.chip-code{
+  background: color-mix(in srgb, var(--primary) 14%, var(--panel-2));
+  border-color: color-mix(in srgb, var(--primary) 40%, var(--border));
+  color: var(--ink);
+}
+
+/* darle presencia al número */
+.chip-phone{
+  background: color-mix(in srgb, var(--ok) 12%, var(--panel-2));
+  border-color: color-mix(in srgb, var(--ok) 40%, var(--border));
+}
+
+/* afinamos el numerito del paso para que quede centrado con el texto */
+.step .n{
+  display: inline-grid;
+  place-items: center;
+  translate: 0 1px; /* microajuste vertical */
+}
+
+/* en pantallas muy chicas, reducimos apenas el tamaño para que no corte línea */
+@media (max-width: 360px){
+  .chip-code, .chip-phone{ font-size: 0.9rem }
+}

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Activar FinBot por WhatsApp • iA.Agency</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">iA</div>
+        <div class="brand-text">
+          <strong>iA.Agency</strong>
+          <span class="sub">Automatiza. Acelera. Avanza.</span>
+        </div>
+      </div>
+      <div class="actions">
+        <button id="themeToggle" class="ghost" aria-label="Cambiar tema" title="Cambiar tema">☾</button>
+      </div>
+    </header>
+
+    <main class="card" role="region" aria-label="Activación por WhatsApp">
+      <div class="head">
+        <div class="app-icon" aria-hidden="true">F</div>
+        <div>
+          <h1>Activá FinBot por WhatsApp</h1>
+          <p class="sub">Paso único: primero “join”, luego “hola”.</p>
+        </div>
+      </div>
+
+      <section class="body">
+        <div class="grid">
+          <!-- Instrucciones -->
+          <article class="box">
+            <h3>¿Cómo funciona?</h3>
+            <div class="steps">
+              <div class="inline-step">
+  Enviá
+  <span class="chip chip-code" id="join"></span>
+  al número de sandbox
+  <span class="chip chip-phone" id="num"></span>.
+</div>
+
+              <div class="step">
+                <div class="n" aria-hidden="true">2</div>
+                <div>Luego enviá <span class="mono">hola</span> para activar FinBot y recibir la bienvenida 💬.</div>
+              </div>
+            </div>
+
+            <div class="row mt-12">
+              <button class="copy tap" id="copyNum" aria-label="Copiar número"><span class="ico">📞</span> Copiar número</button>
+              <button class="copy tap" id="copyJoin" aria-label="Copiar código"><span class="ico">📋</span> Copiar código</button>
+            </div>
+
+            <div class="mt-14 actions-group">
+              <!-- Botón 1: JOIN -->
+              <button class="btn primary tap" id="btnJoin">
+                <span class="ico">🟢</span> 1) Abrir WhatsApp y enviar “join”
+              </button>
+              <p class="muted mt-6">Se abre WhatsApp (Web o App) con el texto cargado.</p>
+
+              <!-- Botón 2: HOLA (aparece luego) -->
+              <button class="btn secondary tap hidden" id="btnHola" disabled>
+                <span class="ico">👋</span> 2) Enviar “hola” para activar FinBot
+              </button>
+              <p class="muted small hint hidden" id="hintHola">Tip: si ya enviaste el join y ves el OK del sandbox, ahora enviá <b>hola</b>.</p>
+            </div>
+          </article>
+
+          <!-- Panel derecho -->
+          <aside class="box">
+            <h3>¿Por qué hay dos pasos?</h3>
+            <p class="muted lh">
+              En el sandbox, WhatsApp necesita confirmar tu consentimiento con <span class="mono" id="join2"></span>. Ese mensaje no llega a nuestro bot.
+              Por eso te pedimos enviar luego <span class="mono">hola</span> — ese sí llega y activa FinBot en tu número.
+            </p>
+
+          <div class="qr" id="qrBlock" aria-hidden="true">
+  <img src="/src/qr.svg" id="sqrImg" alt="QR para abrir WhatsApp con join" class="" />
+  <p class="muted small mt-6">Escaneá desde el teléfono si estás en computadora.</p>
+</div>
+          </aside>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <span class="tag">Estado: <span id="state" class="warn">Esperando activación</span></span>
+        <span class="tag">FinBot • iA.Agency</span>
+      </footer>
+    </main>
+  </div>
+
+
+  <script src="js/script.js"></script>
+</body>
+</html>
